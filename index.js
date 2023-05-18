@@ -3,10 +3,13 @@ import dotenv from "dotenv"
 import chalk from "chalk"
 
 import connect from "./config/dbConnect.js"
+import authRoutes from "./routes/auth.js"
 
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5001
+
+app.use("/auth", authRoutes)
 
 app.listen(PORT, () => {
   connect()
